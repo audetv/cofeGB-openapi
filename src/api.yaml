@@ -1,0 +1,34 @@
+openapi: 3.0.3
+info:
+  title: CofeGB
+  description: CofeGB app rest api specification
+  version: 1.0.0
+servers:
+  - url: 'https'
+paths:
+  /navMenu:
+    get:
+      description: Return app navigation menu entries
+      responses:
+        200:
+          description: OK
+          content: {}
+  /menu/{category}:
+    get:
+      description: Returns dish menu entries in a given category
+      parameters:
+        - name: category
+          in: path
+          description: Category of dish menu entries to return
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content: {}
+        400:
+          description: Invalid category supplied
+          content: {}
+components: {}
+  
