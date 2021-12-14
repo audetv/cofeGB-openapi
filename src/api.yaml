@@ -5,9 +5,16 @@ info:
   version: 1.0.0
 servers:
   - url: 'https'
+tags:
+  - name: menu
+    description: app navigation menu entries
+  - name: category
+    description: Dish menu entries
 paths:
   /navMenu:
     get:
+      tags:
+        - menu
       description: Return app navigation menu entries
       responses:
         200:
@@ -18,23 +25,20 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/navMenuItem'
-  /menu/{category}:
+  /categories:
     get:
-      description: Returns dish menu entries in a given category
-      parameters:
-        - name: category
-          in: path
-          description: Category of dish menu entries to return
-          required: true
-          schema:
-            type: string
+      tags:
+        - category
+      description: Returns dish menu entries
       responses:
         200:
           description: OK
-          content: {}
-        400:
-          description: Invalid category supplied
-          content: {}
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/category'
 components:
   schemas:
     navMenuItem:
@@ -62,3 +66,18 @@ components:
         warnMsg:
           type: string
           example: ""
+    category:
+      type: object
+      properties:
+        guid:
+          type: string
+          example: 94b1f98d-13e3-4d58-a9b7-86b734daf77d
+        title:
+          type: string
+          example: Закуски
+        icon:
+          type: string
+          example: starters
+        query:
+          type: string
+          example: starters
