@@ -3,8 +3,6 @@ info:
   title: CofeGB
   description: CofeGB app rest api specification
   version: 1.0.0
-servers:
-  - url: 'https'
 tags:
   - name: menu
     description: app navigation menu entries
@@ -65,7 +63,6 @@ components:
           example: false
         warnMsg:
           type: string
-          example: ""
     category:
       type: object
       properties:
